@@ -1,3 +1,11 @@
+// UFBA - MATA58
+// Trabalho - SO - 2018.2
+// Docentes
+//     - Alisson Oliveira
+//     - Lucas Yan
+//     - Vinicius Pinto
+// Discente
+//     - Maycon Leone M. Peixoto
 class PrioQueue{
     constructor(compFunc){
         this.arr = []
@@ -16,21 +24,12 @@ class PrioQueue{
             this.arr.push(a)
             this.length++
         }
-
-        // console.log("A fila:")
-        // for(var i=0; i < this.arr.length; i++){
-        //     console.log(this.arr[i].id)
-        // }      
     }
     dequeue(){
         if(this.arr.length > 0){
             this.length--
             return this.arr.shift()
         }
-        // console.log("A fila:")
-        // for(var i=0; i < this.arr.length; i++){
-        //     console.log(this.arr[i].id)
-        // }
     }
     seek(){
         return this.arr[0]

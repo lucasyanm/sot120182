@@ -1,3 +1,11 @@
+// UFBA - MATA58
+// Trabalho - SO - 2018.2
+// Docentes
+//     - Alisson Oliveira
+//     - Lucas Yan
+//     - Vinicius Pinto
+// Discente
+//     - Maycon Leone M. Peixoto
 class NormalQueue{
     constructor(){
         this.arr = []
@@ -11,7 +19,6 @@ class NormalQueue{
     }
     dequeue(){
         if(this.arr.length > 0){
-            // console.log("Ta tirando")
             this.length--
             return this.arr.shift()
         }

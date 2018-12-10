@@ -1,3 +1,11 @@
+// UFBA - MATA58
+// Trabalho - SO - 2018.2
+// Docentes
+//     - Alisson Oliveira
+//     - Lucas Yan
+//     - Vinicius Pinto
+// Discente
+//     - Maycon Leone M. Peixoto
 function getMaxExecTime(processes){
     maxExec = processes[0].execTime
     for(var i in processes){
@@ -183,10 +191,8 @@ class Simulation{
         var column = []
         var value
         for(var i in this.processes){
-            // console.log("Processo"+parseInt(i))
             if(this.current == this.processes[i]){
                 if(isPreemption == true){
-                    // console.log("Foi preempção")
                     value = "X"
                 }
                 else{
@@ -248,8 +254,6 @@ class SimulationSJF extends Simulation{
                 return a.id - b.id
            }
         }
-
-        // this.readyQueue = new PriorityQueue({ comparator: this.compareFunc })
         this.readyQueue = new PrioQueue(this.compareFunc)
         this.quantum = quantum = getMaxExecTime(processes)+1
         this.usedQuantum = this.quantum
@@ -271,7 +275,6 @@ class SimulationEDF extends Simulation{
         {
             return a.deadline - b.deadline
         }
-        // this.readyQueue = new PriorityQueue({ comparator: this.compareFunc })
         this.readyQueue = new PrioQueue(this.compareFunc)
     }
 
@@ -293,7 +296,6 @@ class SimulationPRIO extends Simulation{
         {
             return b.priority - a.priority
         }
-        // this.readyQueue = new PriorityQueue({ comparator: this.compareFunc })
         this.readyQueue = new PrioQueue(this.compareFunc)
     }
 }

@@ -1,10 +1,21 @@
+<!--
+UFBA - MATA58
+Trabalho - SO - 2018.2
+Docentes
+    - Alisson Oliveira
+    - Lucas Yan
+    - Vinicius Pinto
+Discente
+    - Maycon Leone M. Peixoto
+-->
+
 <!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="game.css">
+    <link rel="stylesheet" href="stylesheet.css">
     <script src="script.js"></script>
     <script src="memories.js"></script>
     <script src="NormalQueue.js"></script>
@@ -50,13 +61,6 @@
                 </select>
               </div>
 
-              <div>
-                Info:
-                <br>
-                <textarea name="info" cols="30" rows="10" id="informaciones"></textarea> <br>
-                <br>
-              </div>
-
               <div class="algoritmos">
                 <h3 class="col-12">Escalonamento de Páginas</h3>
                 <select id="algorit-pages" class="input-algorit">
@@ -71,10 +75,10 @@
               
               <button id = "clearButton" class="btn btn-primary" style="float: right;font-weight: bold;" onClick = 'limparDados()' disabled>Clear</button>
               <button type="button" id = "pauseButton" style="float: right; margin-right: 5px;" class = "btn btn-primary" onClick = 'pauseSimulation()' disabled>
-                <img src="_img/pause-512.png" width="20px" height="20px" style="margin-top: -4px; margin-left: 2px;"/>  
+                <img src="pause-512.png" width="20px" height="20px" style="margin-top: -4px; margin-left: 2px;"/>  
               </button> 
               <button type="button" id = "playButton" style = "float: right;  margin-right: 5px;" class = "btn btn-primary" onCLick = 'startSimulation()'>
-                <img src="_img/play-white.png" width="20px" height="20px" style="margin-top: -4px;margin-left: 4px;"/> 
+                <img src="play-white.png" width="20px" height="20px" style="margin-top: -4px;margin-left: 4px;"/> 
               </button>
               
               <input type="range" id = "velocidadeExecucao" class="myRange" min="0" max="1000" onChange = "rangeChange()" style="margin-left: 10px"/>
@@ -119,15 +123,6 @@
                             <td align="center" id="processo-io">
 
                             </td>                            
-                            <!-- <td>
-                              <span class="processo-coad">P2</span>
-                            </td>
-                            <td>
-                                <span class="processo-coad">P2</span>
-                            </td>
-                            <td>
-                                <span class="processo-coad">P2</span>
-                            </td> -->
                           </tr>
                         </table>
                     

@@ -1,3 +1,11 @@
+// UFBA - MATA58
+// Trabalho - SO - 2018.2
+// Docentes
+//     - Alisson Oliveira
+//     - Lucas Yan
+//     - Vinicius Pinto
+// Discente
+//     - Maycon Leone M. Peixoto
 var cont=0;
 var nodes = [];
 var pause = false;
@@ -23,40 +31,20 @@ function processInfo(nodes){
     npages = document.getElementById("inputpagesperprocess").value
     processes = []
 
-
-    info = document.getElementById("informaciones").value
-    // Allocating processes
-    processesLines = info.split("\n")
-    processes = []
-    for(var i in processesLines){
-        aux = processesLines[i].split(" ")
+    for(var i in nodes){
         processes.push({
             idNome:parseInt(nodes[i]),
             id:parseInt(i),
-            arriveTime:parseInt(aux[0]), 
-            execTime:parseInt(aux[1]), 
-            deadline:parseInt(aux[2]), 
-            priority:parseInt(aux[3]),
+            arriveTime:document.getElementById("inputtime"+nodes[i]).value, 
+            execTime:document.getElementById("inputexecute"+nodes[i]).value, 
+            deadline:document.getElementById("inputdeadline"+nodes[i]).value, 
+            priority:document.getElementById("inputpriority"+nodes[i]).value,
             totalTime:0,
             inIO:false,
+            inIOqueue:false,
             exists:false
         });
     }
-
-    // for(var i in nodes){
-    //     processes.push({
-    //         idNome:parseInt(nodes[i]),
-    //         id:parseInt(i),
-    //         arriveTime:document.getElementById("inputtime"+nodes[i]).value, 
-    //         execTime:document.getElementById("inputexecute"+nodes[i]).value, 
-    //         deadline:document.getElementById("inputdeadline"+nodes[i]).value, 
-    //         priority:document.getElementById("inputpriority"+nodes[i]).value,
-    //         totalTime:0,
-    //         inIO:false,
-    //         inIOqueue:false,
-    //         exists:false
-    //     });
-    // }
 
     // Criando memoria
     if(memoryType == "FIFO"){
@@ -88,8 +76,6 @@ function processInfo(nodes){
 
 
 function createTableVirtual(paginas){
-    // console.log(nodes.length);
-    // console.log(paginas);
     for (let i = 0; i < (nodes.length); i++) {
         tr = document.createElement('tr');
         tr.setAttribute('class',"shedule-mem-v");
@@ -125,9 +111,6 @@ function createTableVirtual(paginas){
             span.innerHTML = i*parseInt(paginas) + j ;
             td.appendChild(span);
             td.appendChild(span2);
-            //td.style.backgroundColor = 'red';
-
-
             tr.appendChild(td);
         }
 
@@ -163,15 +146,12 @@ function createTable(){
 function deleteno(id){
     x = nodes.indexOf(id); 
     aux = document.getElementsByClassName("form-group col-sm-9 removivel")[x];
-    // console.log(aux);
     document.getElementById("process").removeChild(aux);
 
     aux = document.getElementsByClassName("form-group col-sm-3 delete-button")[x];
-    // console.log(aux);
     document.getElementById("process").removeChild(aux); 
     
     aux = document.getElementsByClassName("intdiv")[x];
-    // console.log(aux);
     document.getElementById("process").removeChild(aux);  
     
     aux = document.getElementById("linha"+id);
@@ -193,9 +173,6 @@ function deleteno(id){
 function show(id){
     x = nodes.indexOf(id); 
     aux = document.getElementsByClassName("intdiv")[x];
-  
-    // console.log(x);
-    // console.log(aux);
 
     var height;
     var id;
@@ -268,7 +245,6 @@ function frame(){
             if(pause)
                 break; 
             atualTr = document.getElementById("linha"+nodes[b]);
-            // console.log(nodes[b]);
             newCol = document.createElement('td');
             newCol.setAttribute('class',"square");
             newCol.style.height = "30px";
@@ -313,10 +289,8 @@ function frame(){
             if(informations.column[b]=='Q')
                 newCol.style.backgroundColor = "lightgray";  
 
-            atualTr.appendChild(newCol);    
-            // console.log("SCROLL = ");            
+            atualTr.appendChild(newCol);       
             var maxScrollLeft = document.getElementById('grafico').scrollWidth - document.getElementById('grafico').clientWidth;
-            // console.log(maxScrollLeft);
             $('#grafico').scrollLeft(maxScrollLeft);
             document.getElementById('turnaround').innerHTML = "Turnaround médio = "+informations.ta;
             
@@ -422,8 +396,6 @@ function startSimulation(){
     $('.button-process').attr("disabled", false);
     $('#velocidadeExecucao').attr("disabled", false);
     pause = false;
-
-    //matriz = processInfo(nodes);
     
 
 
@@ -435,7 +407,6 @@ function startSimulation(){
     if(firstRun == false){
         processInfo(nodes);
         firstRun=true;
-        // console.log("buceta")
     } 
 
     frame();
@@ -444,7 +415,6 @@ function startSimulation(){
     document.getElementById('addButton').setAttribute('disabled', "true");
 
     ID = setInterval(frame, 1000 - document.getElementById('velocidadeExecucao').value);
-    // console.log(matriz)
  
    
 }
@@ -464,7 +434,6 @@ function limparDados(){
     $('#turnaround').html('Tunraround médio = ...');
     deleteProcessQueue();
     firstRun = false;
-    // document.getElementById('tabela').width = "76.4px";
     created = false;
     a = 0;
     b = 0;
@@ -566,7 +535,6 @@ function inserirProcesso(){
     t.setAttribute('class', "form-control ajuste");
     t.setAttribute('id', "inputpriority"+parseInt(cont));
     t.setAttribute('value', "0");
-    // t.setAttribute('placeholder', "Prioridade");
 
     i.appendChild(p);
     i.appendChild(t);
